@@ -1,5 +1,6 @@
-import Head from 'next/head';
-import { Toaster, toast } from 'react-hot-toast';
+import Head from "next/head";
+import Image from "next/image";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Home() {
     return (
@@ -7,19 +8,19 @@ export default function Home() {
             <Toaster/>
             <Head>
                 <link
-                    rel="preload"
+                    rel="preconnect"
                     href="https://fonts.gstatic.com/s/chakrapetch/v8/cIfnMbdUsUoiW9oIRSE2rHsMvl0g.woff2"
                     as="font"
                     type="font/woff2"
                     crossOrigin="anonymous"
                 />
-                <title>Silas' Portfolio</title>
+                <title>Silas&apos; Portfolio</title>
             </Head>
             <div data-theme="forest">
                 <div className="navbar bg-black fixed top-0 left-0 right-0 z-10 flex justify-between items-center">
                     <div className="flex items-center">
                         <span className="text-accent text-2xl font-bold px-2 py-1 h-10">
-                            {'{'}S{'}'}
+                            {"{"}S{"}"}
                         </span>
                     </div>
                     <div className="flex space-x-4">
@@ -30,26 +31,27 @@ export default function Home() {
                 </div>
                 <div id="top" className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <img
+                        <Image
                             src="/CV_pic.jpg "
-                            className="max-w-sm rounded-lg shadow-2xl" />
+                            alt="CV pic"
+                            className="max-w-sm rounded-lg shadow-2xl" width={512} height={704}/>
                         <div>
                             <h1 className="text-5xl text-primary font-bold pb-1 pl-3" style={{ textShadow: "2px 2px 5px #008080" }}>Silas PAQUET</h1>
                             <h2 className="text-xl text-primary pl-[190px]" style={{ textShadow: "1px 1px 3px #008080" }}>Software Engineer</h2>
                             <p className="text-lg text-secondary pt-6 px-3 pb-1">
-                                Hi there ! I'm a junior developper currently in 2nd year at Epitech Lyon<br/><br/><br/>
+                                Hi there ! I&apos;m a junior developper currently in 2nd year at Epitech Lyon<br/><br/><br/>
                             </p>
                             <p className="text-secondary pl-3 pb-1">Feel free to contact me :</p>
                             <a
                                 className="btn text-accent link-hover"
                                 onClick={() => {
                                     navigator.clipboard.writeText("paquetsilas@gmail.com");
-                                    toast('Email copied to clipboard !',
+                                    toast("Email copied to clipboard !",
                                         {
                                           style: {
-                                            borderRadius: '10px',
-                                            background: '#333',
-                                            color: '#1db88e',
+                                            borderRadius: "10px",
+                                            background: "#333",
+                                            color: "#1db88e",
                                           },
                                         }
                                       );
@@ -114,15 +116,23 @@ export default function Home() {
                     <div
                         className="card bg-base-100 w-96 shadow-xl transition-transform transform hover:scale-105 duration-200 ease-in-out cursor-pointer"
                         onClick={() => {
-                            document.getElementById("project_1_desc").showModal();
-                            document.getElementById("modal_1_title").scrollIntoView({
-                                behavior: "auto",
-                                block: "start",
-                            });
+                            const projectDesc = document.getElementById("project_1_desc");
+                            const modalTitle = document.getElementById("modal_1_title");
+                
+                            if (projectDesc instanceof HTMLDialogElement) {
+                                projectDesc.showModal();
+                            }
+                
+                            if (modalTitle) {
+                                modalTitle.scrollIntoView({
+                                    behavior: "auto",
+                                    block: "start",
+                                });
+                            }
                         }}
                     >
                         <figure>
-                            <img src="/radar.png" alt="Error loading image" />
+                            <Image src="/radar.png" alt="Error loading image" width={1919} height={1006}/>
                         </figure>
                             <div className="card-body">
                                 <h2 className="card-title text-primary">MY_RADAR</h2>
@@ -130,19 +140,25 @@ export default function Home() {
                                     Simulation of collisions between a potentially very large amount of moving objects.
                                 </p>
                                 <div className="card-actions justify-end">
-                                    <button
-                                        className="btn text-accent"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            document.getElementById("project_1_desc").showModal();
-                                            document.getElementById("modal_1_title").scrollIntoView({
+                                <button
+                                    className="btn text-accent"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        const projectDesc = document.getElementById("project_1_desc");
+                                        const modalTitle = document.getElementById("modal_1_title");
+                                        if (projectDesc instanceof HTMLDialogElement) {
+                                            projectDesc.showModal();
+                                        }
+                                        if (modalTitle) {
+                                            modalTitle.scrollIntoView({
                                                 behavior: "auto",
                                                 block: "start",
                                             });
-                                        }}
-                                    >
-                                        About
-                                    </button>
+                                        }
+                                    }}
+                                >
+                                    About
+                                </button>
                                 </div>
                             </div>
                         </div>
@@ -166,9 +182,9 @@ export default function Home() {
                                         </p>
                                     </div>
                                     <div className="w-1/2 flex flex-col space-y-4 items-center overflow-auto">
-                                        <img src="/radar_nohb.png" alt="no hitbox" className="object-contain w-full max-h-full" />
-                                        <img src="/radar_debug.png" alt="debug" className="object-contain w-full max-h-full" />
-                                        <img src="/radar_ids.png" alt="IDs shown" className="object-contain w-full max-h-full" />
+                                        <Image src="/radar_nohb.png" alt="no hitbox" className="object-contain w-full max-h-full" width={1919} height={1001}/>
+                                        <Image src="/radar_debug.png" alt="debug" className="object-contain w-full max-h-full" width={1919} height={1006}/>
+                                        <Image src="/radar_ids.png" alt="IDs shown" className="object-contain w-full max-h-full" width={1919} height={1006}/>
                                     </div>
                                 </div>
                             </div>
@@ -178,36 +194,49 @@ export default function Home() {
                         </dialog>
                         <div className="card bg-base-100 w-96 shadow-xl transition-transform transform hover:scale-105 duration-200 ease-in-out"
                         onClick={() => {
-                            document.getElementById("project_2_desc").showModal();
-                            document.getElementById("modal_2_title").scrollIntoView({
-                                behavior: "auto",
-                                block: "start",
-                            });
+                            const projectDesc = document.getElementById("project_2_desc");
+                            const modalTitle = document.getElementById("modal_2_title");
+                            if (projectDesc instanceof HTMLDialogElement) {
+                                projectDesc.showModal();
+                            }
+                            if (modalTitle) {
+                                modalTitle.scrollIntoView({
+                                    behavior: "auto",
+                                    block: "start",
+                                });
+                            }
                         }}
                     >
                             <figure>
-                                <img
+                                <Image
                                     src="/haemo_menu.png"
-                                    alt="Error loading image"
+                                    alt="Haemolacria menu"
+                                    width={1920} height={1080}
                                 />
                             </figure>
                             <div className="card-body">
                             <h2 className="card-title text-primary">HAEMOLACRIA</h2>
                             <p className="text-secondary">RPG game with projectile-based combat mechanics as well as multiple levels, enemies and items. </p>
                                 <div className="card-actions justify-end">
-                                    <button
-                                        className="btn text-accent"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            document.getElementById("project_2_desc").showModal();
-                                            document.getElementById("modal_2_title").scrollIntoView({
+                                <button
+                                    className="btn text-accent"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        const projectDesc = document.getElementById("project_2_desc");
+                                        const modalTitle = document.getElementById("modal_2_title");
+                                        if (projectDesc instanceof HTMLDialogElement) {
+                                            projectDesc.showModal();
+                                        }
+                                        if (modalTitle) {
+                                            modalTitle.scrollIntoView({
                                                 behavior: "auto",
                                                 block: "start",
                                             });
-                                        }}
-                                    >
-                                        About
-                                    </button>
+                                        }
+                                    }}
+                                >
+                                    About
+                                </button>
                                 </div>
                             </div>
                         </div>
@@ -221,16 +250,16 @@ export default function Home() {
                                         The project is fully coded in C using the CSFML library.<br /><br />
                                         Game includes:<br /><br />
                                         - 3 Levels to explore, consisting of multi-layered tiled maps (made with Tiled)<br /><br />
-                                        - Projectile-based combat system, where the player can shoot damaging orbs at enemies, which behave differently depending on the player's stats<br /><br />
+                                        - Projectile-based combat system, where the player can shoot damaging orbs at enemies, which behave differently depending on the player&apos;s stats<br /><br />
                                         - Multiple ranged & melee enemies with different stats and sound effects<br /><br />
                                         - Several stat-modifying equippable items<br /><br />
                                         - Inventory system that allows the player to equip/unequip items<br /><br />
                                     </p>
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-4 items-center overflow-auto">
-                                    <img src="/haemo_village.png" alt="village" className="object-contain w-full max-h-full" />
-                                    <img src="/haemo_dungeon.png" alt="dungeon" className="object-contain w-full max-h-full" />
-                                    <img src="/haemo_bossfight.png" alt="bossfight" className="object-contain w-full max-h-full" />
+                                    <Image src="/haemo_village.png" alt="village" className="object-contain w-full max-h-full" width={1920} height={1080}/>
+                                    <Image src="/haemo_dungeon.png" alt="dungeon" className="object-contain w-full max-h-full" width={1920} height={1080}/>
+                                    <Image src="/haemo_bossfight.png" alt="bossfight" className="object-contain w-full max-h-full" width={1920} height={1080}/>
                                 </div>
                             </div>
                         </div>
@@ -240,36 +269,49 @@ export default function Home() {
                     </dialog>
                             <div className="card bg-base-100 w-96 shadow-xl transition-transform transform hover:scale-105 duration-200 ease-in-out"
                                 onClick={() => {
-                                    document.getElementById("project_3_desc").showModal();
-                                    document.getElementById("modal_3_title").scrollIntoView({
-                                        behavior: "auto",
-                                        block: "start",
-                                    });
+                                    const projectDesc = document.getElementById("project_3_desc");
+                                    const modalTitle = document.getElementById("modal_3_title");
+                                    if (projectDesc instanceof HTMLDialogElement) {
+                                        projectDesc.showModal();
+                                    }
+                                    if (modalTitle) {
+                                        modalTitle.scrollIntoView({
+                                            behavior: "auto",
+                                            block: "start",
+                                        });
+                                    }
                                 }}
                             >
                                 <figure>
-                                <img
+                                <Image
                                     src="/tcsh_logo.jpg "
-                                    alt="Error loading image"
+                                    alt="Tcsh logo"
+                                    width={1200} height={653}
                                 />
                                 </figure>
                                 <div className="card-body">
                                 <h2 className="card-title text-primary">MINISHELL 2</h2>
                                 <p className="text-secondary">Tcsh inspired shell.</p>
                                     <div className="card-actions justify-end">
-                                        <button
-                                            className="btn text-accent"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                document.getElementById("project_3_desc").showModal();
-                                                document.getElementById("modal_3_title").scrollIntoView({
+                                    <button
+                                        className="btn text-accent"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            const projectDesc = document.getElementById("project_3_desc");
+                                            const modalTitle = document.getElementById("modal_3_title");
+                                            if (projectDesc instanceof HTMLDialogElement) {
+                                                projectDesc.showModal();
+                                            }
+                                            if (modalTitle) {
+                                                modalTitle.scrollIntoView({
                                                     behavior: "auto",
                                                     block: "start",
                                                 });
-                                            }}
-                                        >
-                                            About
-                                        </button>
+                                            }
+                                        }}
+                                    >
+                                        About
+                                    </button>
                                     </div>
                                 </div>
                             </div>
@@ -278,10 +320,10 @@ export default function Home() {
                                     <div className="flex flex-row flex-grow">
                                         <div className="w-1/2 pr-4">
                                             <h3 id="modal_3_title" className="font-bold text-lg text-primary pb-9">MINISHELL 2</h3>
-                                            <p className="py-5 px-3 text-lg text-secondary">A partial recreation of Tcsh (TENEX C Shell), a UNIX command interpreter, entirely coded in C for an Epitech project<br/><br/>The shell includes the following fonctionalities:<br/><br/>- Execution of binaries : the ability to run programs found in the system's PATH<br/><br/>- Semicolons ( ';' ) : Allows executing multiple commands in a single line<br/><br/>- Pipes ( '|' ) : Enables the chaining of processes, passing the output of one command as the input of another<br/><br/>- Redirections ( '{'>'}', '{'<'}', '{'<<'}', '{'>>'}' ) : Allows changing the input and output streams of processes</p>
+                                            <p className="py-5 px-3 text-lg text-secondary">A partial recreation of Tcsh (TENEX C Shell), a UNIX command interpreter, entirely coded in C for an Epitech project<br/><br/>The shell includes the following fonctionalities:<br/><br/>- Execution of binaries : the ability to run programs found in the system&apos;s PATH<br/><br/>- Semicolons ( &apos;;&apos; ) : Allows executing multiple commands in a single line<br/><br/>- Pipes ( &apos;|&apos; ) : Enables the chaining of processes, passing the output of one command as the input of another<br/><br/>- Redirections ( &apos;{">"}&apos;, &apos;{"<"}&apos;, &apos;{"<<"}&apos;, &apos;{">>"}&apos; ) : Allows changing the input and output streams of processes</p>
                                         </div>
                                         <div className="w-1/2 flex flex-col space-y-4 items-center overflow-auto">
-                                            <img src="/shell_tests.png" alt="shell showcase" className="object-contain w-full max-h-full" />
+                                            <Image src="/shell_tests.png" alt="shell showcase" className="object-contain w-full max-h-full" width={1538} height={839}/>
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +338,7 @@ export default function Home() {
             <h1 className="text-4xl font-bold text-primary mb-[15px]" style={{ textShadow: "2px 2px 5px #008080" }}>
             Skills
             </h1>
-                <p className="text-lg text-secondary">Skills I've acquired over the years</p>
+                <p className="text-lg text-secondary">Skills I&apos;ve acquired over the years</p>
             </div>
             <div className="flex justify-center items-center space-x-[100px] mb-[150px]">
                 <div className="card bg-base-100 w-96 shadow-xl">
@@ -310,7 +352,7 @@ export default function Home() {
                                     height={22}
                                     fill="#1db8ab"
                                     viewBox="0 0 109.19 122.88"
-                                    className='mr-[9px]'
+                                    className="mr-[9px]"
                                 >
                                     <path
                                         d="M107.81 92.16c.86-1.48 1.39-3.16 1.39-4.66V35.38c0-1.5-.53-3.17-1.39-4.66L54.6 61.44l53.21 30.72z"
@@ -355,7 +397,7 @@ export default function Home() {
                                     height={22}
                                     fill="#1db8ab"
                                     viewBox="0 0 32 32"
-                                    className='mr-[9px]'
+                                    className="mr-[9px]"
                                 >
                                     <g id="SVGRepo_iconCarrier">
                                         <defs>
@@ -401,7 +443,7 @@ export default function Home() {
                                     height={22}
                                     fill="none"
                                     viewBox="0 0 15 15"
-                                    className='mr-[9px]'
+                                    className="mr-[9px]"
                                 >
                                     <path
                                         fill="#1db8ab"
@@ -423,7 +465,7 @@ export default function Home() {
                 fill="#1db8ab"
                 stroke="#1db8ab"
                 viewBox="0 0 256 256"
-                className='mr-[9px]'
+                className="mr-[9px]"
             >
                 <path
                     fillRule="evenodd"
@@ -445,7 +487,7 @@ export default function Home() {
                     height={24}
                     fill="#000"
                     viewBox="0 0 32 32"
-                    className='mr-[9px]'
+                    className="mr-[9px]"
                 >
                     <g id="SVGRepo_iconCarrier">
                     <style>{".st0{fill:#1db8ab}"}</style>
@@ -480,7 +522,7 @@ export default function Home() {
                         height={22}
                         fill="#1db8ab"
                         viewBox="0 0 512 512"
-                        className='mr-[9px]'
+                        className="mr-[9px]"
                     >
                         <path d="M426.333.5H85.667C38.825.5.5 38.825.5 85.667v340.667c0 46.842 38.325 85.167 85.167 85.167h340.667c46.842 0 85.167-38.325 85.167-85.167V85.667C511.5 38.825 473.175.5 426.333.5zM245.329 260.524c-17.736 17.736-45.611 26.065-77.103 26.065-8.326 0-15.927-.365-21.72-1.451v91.945h-44.159v-240.72c15.927-2.895 38.009-5.069 68.05-5.069 32.582 0 56.473 6.878 72.039 19.911 14.48 11.947 23.89 31.131 23.89 53.936-.001 23.168-7.24 42.351-20.997 55.383zm92.652 120.182c-21.358 0-40.542-5.069-53.574-12.31l8.687-32.216c10.135 6.154 29.322 12.671 45.249 12.671 19.545 0 28.236-7.964 28.236-19.549 0-11.943-7.239-18.099-28.96-25.7-34.391-11.947-48.866-30.769-48.505-51.403 0-31.131 25.7-55.383 66.604-55.383 19.549 0 36.562 5.069 46.695 10.496l-8.687 31.493c-7.602-4.342-21.721-10.135-37.285-10.135-15.928 0-24.615 7.602-24.615 18.46 0 11.224 8.326 16.655 30.77 24.618 31.854 11.582 46.696 27.871 47.058 53.937-.001 31.854-24.976 55.021-71.673 55.021zM221.8 206.95c0 28.598-20.273 44.887-53.574 44.887-9.049 0-16.289-.362-21.72-1.809v-82.534c4.708-1.085 13.395-2.171 25.704-2.171 30.769 0 49.59 14.48 49.59 41.627z" />
                     </svg>Photoshop
@@ -498,12 +540,12 @@ export default function Home() {
                     className="flex items-center text-secondary link-hover"
                     onClick={() => {
                     navigator.clipboard.writeText("paquetsilas@gmail.com");
-                    toast('Email copied to clipboard !',
+                    toast("Email copied to clipboard !",
                         {
                           style: {
-                            borderRadius: '10px',
-                            background: '#333',
-                            color: '#1db88e',
+                            borderRadius: "10px",
+                            background: "#333",
+                            color: "#1db88e",
                           },
                         }
                       );
@@ -538,7 +580,7 @@ export default function Home() {
                     LinkedIn
                 </a>
                 </div>
-                <p className='text-primary'>Designed & built by Silas PAQUET.</p>
+                <p className="text-primary">Designed & built by Silas PAQUET.</p>
             </aside>
         </footer>
         </>
