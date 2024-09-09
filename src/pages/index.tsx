@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import '../app/globals.css';
 import { Toaster, toast } from "react-hot-toast";
 
 export default function Home() {
