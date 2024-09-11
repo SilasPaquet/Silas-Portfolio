@@ -20,7 +20,7 @@ const config: Config = {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ['forest'], // Choose themes you want to include
+    themes: ['forest'],
   },
 };
 

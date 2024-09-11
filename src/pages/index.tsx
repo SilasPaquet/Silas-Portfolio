@@ -113,7 +113,7 @@ export default function Home() {
                         </h1>
                         <p className="text-lg text-secondary">A collection of my recent work</p>
                     </div>
-                    <div className="flex justify-center items-center space-x-[100px] mb-[150px]">
+                    <div className="flex flex-col md:flex-row justify-center items-center md:space-x-[100px] space-y-6 md:space-y-0 mb-[150px]">
                     <div
                         className="card bg-base-100 w-96 shadow-xl transition-transform transform hover:scale-105 duration-200 ease-in-out cursor-pointer"
                         onClick={() => {
@@ -341,7 +341,7 @@ export default function Home() {
             </h1>
                 <p className="text-lg text-secondary">Skills I&apos;ve acquired over the years</p>
             </div>
-            <div className="flex justify-center items-center space-x-[100px] mb-[150px]">
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-[100px] mb-[150px]">
                 <div className="card bg-base-100 w-96 shadow-xl">
                     <div className="card-body">
                         <h2 className="card-title text-primary justify-center">DEV</h2>
